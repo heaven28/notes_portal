@@ -2,7 +2,7 @@ version: "3"
 services: 
     react-app:
         image: heaven28/notes-react-app:latest
-        build: ./client/
+        # build: ./client/
         stdin_open: true
         ports:
             - "5005:5005"
@@ -12,7 +12,7 @@ services:
             #     ipv4_address: 172.20.128.3
     api-server:
         image: heaven28/notes-api-server:latest
-        build: ./server/
+        # build: ./server/
         ports: 
             - "3000:3000"
         networks:
