@@ -1,0 +1,29 @@
+version: "3"
+services: 
+    react-app:
+        image: react-app
+        build: ./client/
+        stdin_open: true
+        ports:
+            - "5005:5005"
+        networks:
+            - mern-app
+            # static-network:
+            #     ipv4_address: 172.20.128.3
+    api-server:
+        image: api-server
+        build: ./server/
+        ports: 
+            - "5005:5005"
+        networks:
+            - mern-app
+            # static-network:
+            #     ipv4_address: 172.20.128.2
+
+networks:
+    mern-app:
+        driver: bridge
+    # static-network:
+    #     ipam:
+    #         config:
+    #             - subnet: 172.20.0.0/16

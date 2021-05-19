@@ -20,7 +20,7 @@ router.post('/create', async (req, res) => {
 router.get('/thread/:id', async (req, res) => {
     const page = req.query.page;
     const perPage = 10;
-    const posts = await Post.find({threadId: req.params.id}).limit(perPage).skip(perPage + (page - 1));
+    const posts = await Post.find({threadId: req.params.id}).limit(perPage);
     res.send(posts);
 });
 
