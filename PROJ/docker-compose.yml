@@ -8,8 +8,8 @@ services:
             - "5005:5005"
         networks:
             - mern-app
-            # static-network:
-            #     ipv4_address: 172.20.128.3
+            static-network:
+                ipv4_address: 172.20.128.3
     api-server:
         image: heaven28/notes-api-server:latest
         build: /home/urg/IIITB/SPE/server/
@@ -17,13 +17,13 @@ services:
             - "3000:3000"
         networks:
             - mern-app
-            # static-network:
-            #     ipv4_address: 172.20.128.2
+            static-network:
+                ipv4_address: 172.20.128.2
 
 networks:
     mern-app:
         driver: bridge
-    # static-network:
-    #     ipam:
-    #         config:
-    #             - subnet: 172.20.0.0/16
+    static-network:
+        ipam:
+            config:
+                - subnet: 172.20.0.0/16
