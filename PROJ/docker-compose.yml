@@ -7,18 +7,20 @@ services:
         ports:
             - "5005:5005"
         networks:
-            - mern-app
             static-network:
                 ipv4_address: 172.20.128.3
+            - mern-app
+            
     api-server:
         image: heaven28/notes-api-server:latest
         build: /home/urg/IIITB/SPE/server/
         ports: 
             - "3000:3000"
         networks:
-            - mern-app
             static-network:
                 ipv4_address: 172.20.128.2
+            - mern-app
+            
 
 networks:
     mern-app:
