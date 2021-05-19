@@ -14,7 +14,7 @@ services:
         image: api-server
         build: ./server/
         ports: 
-            - "5005:5005"
+            - "3000:3000"
         networks:
             - mern-app
             # static-network:
