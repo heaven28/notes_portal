@@ -1,7 +1,7 @@
 version: "3"
 services: 
     react-app:
-        image: notes-react-app
+        image: heaven28/notes-react-app:latest
         build: ./client/
         stdin_open: true
         ports:
@@ -11,7 +11,7 @@ services:
             # static-network:
             #     ipv4_address: 172.20.128.3
     api-server:
-        image: notes-api-server
+        image: heaven28/notes-api-server:latest
         build: ./server/
         ports: 
             - "3000:3000"
