@@ -1,12 +1,14 @@
-{"message":"User Already Exists","level":"info"}
-{"message":"Login token generated for spe","level":"info"}
-{"message":"User spe logged in successfully","level":"info"}
-{"message":"Displaying Category","level":"info"}
-{"message":"Category Science found","level":"info"}
-{"message":"Displaying forums","level":"info"}
-{"message":"Forum Physics found","level":"info"}
-{"message":"New Thread Fluid created at  1621508892319","level":"info"}
-{"message":"Thread Fluid found","level":"info"}
-{"message":"Displaying Posts","level":"info"}
-{"message":"New post yes you right brother created at  1621508902648","level":"info"}
-{"message":"User does not exist","level":"error"}
+20/05/2021:23:45:21, [info], Login token generated for spe
+20/05/2021:23:45:21, [info], User spe logged in successfully
+20/05/2021:23:45:39, [error], Incorrect Password
+20/05/2021:23:45:47, [error], Incorrect Password
+20/05/2021:23:45:51, [info], Login token generated for random
+20/05/2021:23:45:51, [info], User random logged in successfully
+20/05/2021:23:46:26, [info], User alexander Registered Successfully
+20/May/2021:23:54:22, [error], User does not exist
+20/May/2021:23:57:30, [error], User spe Already Exists
+21/May/21Y:00:01:01 401, [error], User spe Already Exists
+21/May/2021:00:02:43, 664, [error], User spe Already Exists
+21/May/2021:00:03:01, 461, [error], User does not exist
+21/May/2021:00:04:54, 501, [%F], [error], User does not exist
+21/May/2021:00:05:20, 844, %F, [error], User does not exist

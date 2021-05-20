@@ -23,7 +23,7 @@ router.get('/thread/:id', async (req, res) => {
     const perPage = 10;
     const posts = await Post.find({threadId: req.params.id}).limit(perPage);
     if(!posts){
-        logger.info('No Posts found for this thread');
+        logger.error('No Posts found for this thread');
     }
     logger.info('Displaying Posts');
     res.send(posts);
