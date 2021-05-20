@@ -11,7 +11,8 @@ services:
             #     ipv4_address: 172.20.0.3
             - mern-app
         container_name: frontend
-        link: "api-server:api-server"
+        links: 
+            - "api-server:api-server"
 
     api-server:
         image: heaven28/notes-api-server:latest
