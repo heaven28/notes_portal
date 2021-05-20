@@ -7,9 +7,9 @@ services:
         ports:
             - "3000:3000"
         networks:
-            # static-network:
-            #     ipv4_address: 172.20.128.3
-            - mern-app
+            static-network:
+                ipv4_address: 172.20.128.3
+            # - mern-app
         container_name: frontend
 
     api-server:
@@ -18,16 +18,16 @@ services:
         ports: 
             - "5005:5005"
         networks:
-            # static-network:
-            #     ipv4_address: 172.20.128.2
-            - mern-app
+            static-network:
+                ipv4_address: 172.20.128.2
+            # - mern-app
         container_name: backend
             
 
 networks:
-    mern-app:
-        driver: bridge
-    # static-network:
-    #     ipam:
-    #         config:
-    #             - subnet: 172.20.0.0/16
+    # mern-app:
+    #     driver: bridge
+    static-network:
+        ipam:
+            config:
+                - subnet: 172.20.0.0/16
