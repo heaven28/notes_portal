@@ -10,6 +10,7 @@ services:
             # static-network:
             #     ipv4_address: 172.20.128.3
             - mern-app
+        container_name: frontend
 
     api-server:
         image: heaven28/notes-api-server:latest
@@ -20,6 +21,7 @@ services:
             # static-network:
             #     ipv4_address: 172.20.128.2
             - mern-app
+        container_name: backend
             
 
 networks:
