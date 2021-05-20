@@ -14,11 +14,10 @@ describe("Server!", () => {
         .get("/init")
         .end((err, res) => {
           expect(res).to.have.status(201);
-            done();
         });
     });
     it("/POST /api/auth/register as an existing user", () => {
-        let result = chai
+        chai
           .request(auth)
           .post("/register")
           .send({
@@ -43,4 +42,19 @@ describe("Server!", () => {
             expect(res.status).to.equal(201);
           })
       });
+
+      it("/POST /api/auth/login Incorrect Password", () => {
+        chai
+          .request(auth)
+          .post("/register")
+          .send({
+            name: "spe",
+            email: "spe@iiit.org",
+            password: "4321"
+          })
+          .end((err, res) => {
+            expect(res.status).to.equal(401);
+          })
+      });
+
 });
