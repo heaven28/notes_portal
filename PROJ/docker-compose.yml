@@ -8,7 +8,7 @@ services:
             - "3000:3000"
         networks:
             static-network:
-                ipv4_address: 172.20.128.3
+                ipv4_address: 175.40.128.3
             # - mern-app
         container_name: frontend
 
@@ -19,7 +19,7 @@ services:
             - "5005:5005"
         networks:
             static-network:
-                ipv4_address: 172.20.128.2
+                ipv4_address: 175.40.128.2
             # - mern-app
         container_name: backend
             
@@ -30,4 +30,4 @@ networks:
     static-network:
         ipam:
             config:
-                - subnet: 172.20.0.0/16
+                - subnet: 175.40.0.0/16
