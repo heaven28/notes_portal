@@ -5,7 +5,7 @@ services:
         build: /home/urg/IIITB/SPE/client/
         stdin_open: true
         ports:
-            - "5005:5005"
+            - "3000:3000"
         networks:
             # static-network:
             #     ipv4_address: 172.20.128.3
@@ -15,7 +15,7 @@ services:
         image: heaven28/notes-api-server:latest
         build: /home/urg/IIITB/SPE/server/
         ports: 
-            - "3000:3000"
+            - "5005:5005"
         networks:
             # static-network:
             #     ipv4_address: 172.20.128.2
