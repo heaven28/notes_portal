@@ -24,6 +24,7 @@ app.use('/api/post', require('./controllers/Post'));
 
 
 app.get('*', (req, res) => {
+    res.status(201);
     res.sendFile(path.join(__dirname, "..", "client/build/index.html"));
     res.end();
 });

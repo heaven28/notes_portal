@@ -18,7 +18,7 @@ router.get('/init', async (req, res) => {
             response = user;        
         }
     }    
-    res.send({user: response});
+    res.status(201).send({user: response});
 });
 
 
