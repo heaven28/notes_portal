@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Thread = require('../models/Thread');
 const logger = require('../logger');
+const multer = require('multer');
+const uplaod = multer({dest: 'uploads'});
 
 router.post('/create', async (req, res) => {
     const {title, content, forumId, userId} = req.body;
