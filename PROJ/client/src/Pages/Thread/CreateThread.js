@@ -48,6 +48,9 @@ const CreateForum = () => {
                     value={content} 
                     onChange={e => setContent(e.target.value)}/>
 
+                <input type="file" name="file" id="file" class="custom-file-input"></input>
+                <label for="file" class="custom-file-label">Choose File</label>
+
                 <Button type="submit" variant="contained" color="primary">Create</Button>
             </form>
         </div>       
