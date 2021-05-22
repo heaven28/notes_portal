@@ -19,6 +19,7 @@ export default function ShowThread(){
     const [hasMore, setHasMore] = useState(true);
     const [isReplying, setIsReplying] = useState(false);
     const [replyContent, setReplyContent] = useState("");
+    const [image, setImage] = useState("");
 
 
 
@@ -29,9 +30,11 @@ export default function ShowThread(){
         getPosts();
     }, []);
 
+
     const getThread = async () => {
         const response = await axios.get('/api/thread/'+id);
-        setThread(response.data);
+        setThread(response.data.thread);
+        setImage(response.data.file.filename);
     };
 
     const getPosts = async () => {
@@ -74,6 +77,7 @@ export default function ShowThread(){
         <div style={{padding: '2rem'}}>
             {thread && <h1>{thread.title}</h1>}  
             {thread && <p>{thread.content}</p>}
+            {thread && <p><img src={'/api/image/'+image} alt='error'/></p>}
 
             <List>
                 {posts.map((post, index) => (

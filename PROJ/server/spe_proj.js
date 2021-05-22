@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const config = require('./config')
+const Grid = require('gridfs-stream');
 const path = require('path');
+
 
 mongoose.connect(config.mongoUri, {
     useNewUrlParser: true,
@@ -21,6 +23,7 @@ app.use('/api/category', require('./controllers/Category'));
 app.use('/api/forum', require('./controllers/Forum'));
 app.use('/api/thread', require('./controllers/Thread'));
 app.use('/api/post', require('./controllers/Post'));
+app.use('/api/image', require('./controllers/Image'));
 
 
 app.get('*', (req, res) => {

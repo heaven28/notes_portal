@@ -73,6 +73,9 @@ function App() {
                 <Route path = "/thread/:id">
                   <ShowThread/>
                 </Route>
+                <Route path = "/image/:filename">
+                  <img src='/api/image/90df066dd8d0d43ad39dd49719b2d0a2.jpeg'/>
+                </Route>
               </Switch>
             </Router>
           </AuthContext.Provider>
