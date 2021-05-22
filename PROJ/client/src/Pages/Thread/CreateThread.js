@@ -5,24 +5,39 @@ import axios from "axios";
 import {useHistory, useParams} from 'react-router-dom';
 import AuthContext from '../../Contexts/AuthContext';
 
-const CreateForum = () => {
+const CreateThread = () => {
     const {user} = useContext(AuthContext);
     const {id} = useParams();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [file, setFile] = useState("");
+
     const history = useHistory();
 
     const handleOnSubmit = async event => {
         event.preventDefault();
 
-        const data = {
-            title,
-            content,
-            userId: user._id,
-            forumId: id
-        };
+        const form = document.getElementById("thread_create");
+        let data = new FormData(form);
+        // const data = {
+        //     title,
+        //     content,
+        //     userId: user._id,
+        //     forumId: id,
+        //     file
+        // };
+        console.log(title);
+        console.log(content);
+        data.append('title', title);
+        data.append('content', content);
+        data.append('userId', user._id);
+        data.append('forumId', id);
 
-        const response = await axios.post('/api/thread/create', data);
+        const config = {     
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+
+        const response = await axios.post('/api/thread/create', data, config);
         const {_id} = response.data;
         history.push('/thread/'+_id);
     }
@@ -31,7 +46,7 @@ const CreateForum = () => {
         <div style={{padding:'2rem'}}>
             <h1 style={{marginBottom: "2rem"}}> Create Thread</h1>
 
-            <form onSubmit={handleOnSubmit}>
+            <form onSubmit={handleOnSubmit} id="thread_create">
                 <TextField 
                     variant="outlined" 
                     label="Title" 
@@ -48,8 +63,10 @@ const CreateForum = () => {
                     value={content} 
                     onChange={e => setContent(e.target.value)}/>
 
-                {/* <input type="file" name="file" id="file" class="custom-file-input"></input>
-                <label for="file" class="custom-file-label">Choose File</label> */}
+                <label for="file">Choose File</label>
+                <input type="file" name="file" id="file"
+                    value={file}
+                    onChange={e => setFile(e.target.value)}/>
 
                 <Button type="submit" variant="contained" color="primary">Create</Button>
             </form>
@@ -57,4 +74,4 @@ const CreateForum = () => {
     )
 };
 
-export default CreateForum;
+export default CreateThread;

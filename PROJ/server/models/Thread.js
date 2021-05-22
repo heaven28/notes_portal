@@ -6,7 +6,8 @@ const ThreadSchema = new Schema({
     createdAt: Date,
     forumId: mongoose.ObjectId,
     content: String,
-    userId: mongoose.ObjectId
+    userId: mongoose.ObjectId,
+    file: mongoose.ObjectId
 });
 
 const Thread = mongoose.model('Thread', ThreadSchema);
