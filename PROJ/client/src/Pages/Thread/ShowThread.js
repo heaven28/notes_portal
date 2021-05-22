@@ -20,6 +20,7 @@ export default function ShowThread(){
     const [isReplying, setIsReplying] = useState(false);
     const [replyContent, setReplyContent] = useState("");
     const [image, setImage] = useState("");
+    const [type, setType] = useState("");
 
 
 
@@ -35,6 +36,7 @@ export default function ShowThread(){
         const response = await axios.get('/api/thread/'+id);
         setThread(response.data.thread);
         setImage(response.data.file.filename);
+        setType(response.data.file.contentType);
     };
 
     const getPosts = async () => {
@@ -77,8 +79,10 @@ export default function ShowThread(){
         <div style={{padding: '2rem'}}>
             {thread && <h1>{thread.title}</h1>}  
             {thread && <p>{thread.content}</p>}
-            {thread && <p><img src={'/api/image/'+image} alt='error'/></p>}
-
+            {/* {thread && <p><img src={'/api/image/'+image} alt='error'/></p>} */}
+            {thread && <p><object data={'/api/image/'+image} type={type}><p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p></object></p>}
+            {/* {thread && <iframe width="560" height="315" src="https://www.youtube.com/embed/3f5Q9wDePzY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>} */}
+            {/* {thread && <video width="320" height="240" autoplay muted><source src={movie} type="video/mp4"/></video>} */}
             <List>
                 {posts.map((post, index) => (
                     <ListItem key={index}>

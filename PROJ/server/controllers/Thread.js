@@ -66,33 +66,6 @@ router.post('/create', upload.single('file'), async (req, res) => {
 
 });
 
-
-// router.get('/:filename', (req, res) => {
-//   console.log('image show url');
-//   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-//     // Check if file
-//     if (!file || file.length === 0) {
-//       console.log('no file');
-//       return res.status(404).json({
-//         err: 'No file exists'
-//       });
-//     }
-
-//     // Check if image
-//     if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
-//       // Read output to browser
-//       console.log('showing')
-//       const readstream = gfs.createReadStream(file.filename);
-//       readstream.pipe(res);
-//     } else {
-//       console.log('not image');
-//       res.status(404).json({
-//         err: 'Not an image'
-//       });
-//     }
-//   });
-// });
-
 router.get('/:id', async (req, res) => {
     const thread = await Thread.findById(req.params.id);
     if(!thread){
@@ -103,12 +76,9 @@ router.get('/:id', async (req, res) => {
         return;
     }
     logger.info('Thread ' + thread.title + ' found');
-    console.log(thread);
     gfs.files.findOne({ _id: thread.file }, (err, file) => {
       // Check if file
-      console.log(file);
       if (!file || file.length === 0) {
-          console.log('File not found');
           res.send(thread);
            res.status(404);//.send({
         //   err: 'No file exists'
@@ -117,12 +87,11 @@ router.get('/:id', async (req, res) => {
       }
       else{
         // Check if image
-        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === 'text/plain') {
-          logger.info('Image found');
-          console.log('sending');
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === 'application/pdf' || file.contentType === 'video/mp4' || file.contentType === 'text/plain' || file.contentType === 'audio/mpeg') {
+          logger.info('Media format '+ file.contentType +' passed');
           res.send({thread: thread, file: file});
-          console.log('sent');
         } else {
+          logger.error('Media '+ file.contentType +' format not supported');
           res.status(404);//.send({
           //   err: 'Not an image'
           // });

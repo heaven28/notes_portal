@@ -63,6 +63,9 @@ export default function MenuAppBar() {
           <Typography variant="h6" className={classes.title}>
             SPE PROJECT
           </Typography>
+          <Button color="inherit" onClick={() => history.push('/')}>
+            Home
+          </Button>
           <Button color="inherit" onClick={() => history.push('/category')}>
             Categories
           </Button>
