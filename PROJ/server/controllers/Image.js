@@ -52,21 +52,24 @@ router.get('/:filename', (req, res) => {
   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
     // Check if file
     if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: 'No file exists'
-      });
+      logger.error('No file found with name ' + req.params.filename);
+      return res.status(404);//.json({
+        // err: 'No file exists'
+      // });
     }
-
+    logger.info('File found with name ' + req.params.filename);
     // Check if image
     if (file.contentType === 'image/jpeg' || file.contentType === 'image/png' || file.contentType === 'application/pdf' || file.contentType === 'video/mp4' || file.contentType === 'text/plain' || file.contentType === 'audio/mpeg') {
       // Read output to browser
+      logger.info('Media format '+ file.contentType +' passed');
       logger.info('Loading from MongoDB');
       const readstream = gfs.createReadStream(file.filename);
       readstream.pipe(res);
     } else {
-      res.status(404).json({
-        err: 'Not an image'
-      });
+      logger.error('Media '+ file.contentType +' format not supported');
+      res.status(404);//.json({
+        // err: 'Not an image'
+      // });
     }
   });
 });

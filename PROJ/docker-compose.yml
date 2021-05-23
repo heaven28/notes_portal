@@ -2,13 +2,10 @@ version: "3"
 services: 
     react-app:
         image: heaven28/notes-react-app:latest
-        # build: /home/urg/IIITB/SPE/client/
         stdin_open: true
         ports:
             - "3000:3000"
         networks:
-            # static-network:
-            #     ipv4_address: 172.20.0.3
             - mern-app
         container_name: frontend
         links: 
@@ -16,12 +13,9 @@ services:
 
     api-server:
         image: heaven28/notes-api-server:latest
-        # build: /home/urg/IIITB/SPE/server/
         ports: 
             - "5005:5005"
         networks:
-            # static-network:
-            #     ipv4_address: 172.20.0.2
             - mern-app
         container_name: backend
             
@@ -29,7 +23,3 @@ services:
 networks:
     mern-app:
         driver: bridge
-    # static-network:
-    #     ipam:
-    #         config:
-    #             - subnet: 172.20.0.0/16

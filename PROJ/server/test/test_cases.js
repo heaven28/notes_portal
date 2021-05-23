@@ -1,12 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const auth = require('../controllers/Auth');
-
-//Assertion Styles
-// const assert = chai.assert;
 const { expect } = chai;
 chai.use(chaiHttp);
-
 describe("Server!", () => {
     it("/GET Token initializations", () => {
       chai
@@ -42,7 +38,6 @@ describe("Server!", () => {
             expect(res.status).to.equal(201);
           })
       });
-
       it("/POST /api/auth/login Incorrect Password", () => {
         chai
           .request(auth)
@@ -56,5 +51,4 @@ describe("Server!", () => {
             expect(res.status).to.equal(401);
           })
       });
-
 });

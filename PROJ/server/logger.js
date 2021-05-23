@@ -1,5 +1,3 @@
-
-// %{GREEDYDATA:raw_timestamp}  \[%{LOGLEVEL:level}\]  \[%{GREEDYDATA:message}\]
 const winston = require('winston');
 
 const logConfiguration = {
